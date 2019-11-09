@@ -28,8 +28,8 @@
     {
       "name": "scoreApi",
       "urls": [
-        "https://palikeys1-serverless.firebaseapp.com/api/score",
-        "https://palikeys1-serverless.firebaseapp.com/api/score/*"
+        "https://palikeys2-serverless.firebaseapp.com/api/score",
+        "https://palikeys2-serverless.firebaseapp.com/api/score/*"
       ],
       "cacheConfig": {
         "strategy": "freshness",

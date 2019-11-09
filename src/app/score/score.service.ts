@@ -12,7 +12,7 @@ import {Score} from './_models/scroe.model';
 })
 export class ScoreService {
 
-  private static readonly BASE_URL = 'https://palikeys1-serverless.firebaseapp.com/api/score';
+  private static readonly BASE_URL = 'https://palikeys2-serverless.firebaseapp.com/api/score';
 
   constructor(private http: HttpClient) {
   }
