@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SwUpdate} from '@angular/service-worker';
-import {MatDialog, MatSnackBar, MatSnackBarRef} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBar, MatSnackBarRef} from '@angular/material/snack-bar';
 import {UserDialogComponent} from './user/user-dialog.component';
 import {UserService} from './user/user.service';
 import {LessonService} from './lesson/lesson.service';

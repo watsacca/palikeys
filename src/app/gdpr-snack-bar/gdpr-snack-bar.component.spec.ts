@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {GdprSnackBarComponent} from './gdpr-snack-bar.component';
-import {MAT_SNACK_BAR_DATA} from '@angular/material';
+import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
 
 describe('GdprSnackBarComponent', () => {
   let component: GdprSnackBarComponent;

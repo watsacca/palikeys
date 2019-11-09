@@ -4,7 +4,8 @@ import {AppComponent} from './app.component';
 import {SwUpdate} from '@angular/service-worker';
 import {SwUpdateMock} from './swUpdate.mock';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
-import {MatDialog, MatSnackBar} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

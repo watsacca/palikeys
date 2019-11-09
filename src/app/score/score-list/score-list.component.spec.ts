@@ -4,7 +4,7 @@ import {ScoreListComponent} from './score-list.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ScoreService} from '../score.service';
 import {ScoreServiceMock} from '../score.service.mock';
-import {MatTableModule} from '@angular/material';
+import {MatTableModule} from '@angular/material/table';
 
 describe('ScoreListComponent', () => {
   let component: ScoreListComponent;
