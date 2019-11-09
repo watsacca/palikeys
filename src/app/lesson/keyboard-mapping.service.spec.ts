@@ -37,16 +37,29 @@ describe('KeyboardMappingService', () => {
     expect(service.translate('F', 'qwertzToPaliMeat')).toBe('T');
   });
 
-  it('should translate yz to meat for qwertz', () => {
+  it('should translate yz to ḍv for qwertz', () => {
     const service: KeyboardMappingService = TestBed.get(KeyboardMappingService);
     expect(service.translate('y', 'qwertzToPaliMeat')).toBe('ḍ');
     expect(service.translate('z', 'qwertzToPaliMeat')).toBe('v');
   });
 
-  it('should translate yz to meat for qwerty', () => {
+  it('should translate yz to vḍ for qwerty', () => {
     const service: KeyboardMappingService = TestBed.get(KeyboardMappingService);
     expect(service.translate('y', 'qwertyToPaliMeat')).toBe('v');
     expect(service.translate('z', 'qwertyToPaliMeat')).toBe('ḍ');
+  });
+
+  it('should translate asdf to asdt for qwertzToQwpr', () => {
+    const service: KeyboardMappingService = TestBed.get(KeyboardMappingService);
+    expect(service.translate('a', 'qwertzToQwpr')).toBe('a');
+    expect(service.translate('s', 'qwertzToQwpr')).toBe('s');
+    expect(service.translate('d', 'qwertzToQwpr')).toBe('d');
+    expect(service.translate('f', 'qwertzToQwpr')).toBe('t');
+  });
+
+  it('should translate ; to e for qwertzToQwpr', () => {
+    const service: KeyboardMappingService = TestBed.get(KeyboardMappingService);
+    expect(service.translate(';', 'qwertzToQwpr')).toBe('e');
   });
 
   it('should translate ignore unknown values', () => {

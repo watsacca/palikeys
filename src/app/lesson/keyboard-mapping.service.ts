@@ -75,6 +75,7 @@ export class KeyboardMappingService {
     'b': 'b',
     'n': 'j',
     'm': 'm',
+    ';': 'e',
   };
 
   private mappings = {
