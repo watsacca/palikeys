@@ -1,5 +1,6 @@
 {
   "projects": {
-    "production": "palikeys"
+    "production": "palikeys2",
+    "default": "palikeys2"
   }
 }
