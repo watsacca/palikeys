@@ -9,3 +9,4 @@ e2e/spec/reports
 .firebase
 coverage
 .nyc_output
+/firebase-debug.log
