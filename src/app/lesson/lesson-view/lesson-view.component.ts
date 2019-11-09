@@ -40,7 +40,7 @@ export class LessonViewComponent implements OnInit {
     ];
 
 
-  @ViewChild('textArea') private textarea: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('textArea', { static: true }) private textarea: ElementRef<HTMLTextAreaElement>;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
