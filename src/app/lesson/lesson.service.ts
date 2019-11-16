@@ -15,8 +15,4 @@ export class LessonService {
     return chantingTexts[lessonNumber - 1];
   }
 
-  calcWordsPerMinute(timeStampStart: number, lesson: string, cursorPos: number): number {
-    return Math.round(lesson.trim().slice(0, cursorPos).split(/\s/).length / ((Date.now() - timeStampStart) / 60000));
-  }
-
 }
