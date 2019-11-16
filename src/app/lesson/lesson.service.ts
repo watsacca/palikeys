@@ -6,7 +6,9 @@ import {chantingTexts} from './chantingTexts';
 })
 export class LessonService {
 
-  // TODO: calc this value
+  // TODO: find a better way to deal with this
+  keepFocus = true;
+
   static readonly MAX_LESSON = chantingTexts.length;
 
   make(lessonNumber: number) {

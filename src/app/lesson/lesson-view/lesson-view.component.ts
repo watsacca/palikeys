@@ -66,7 +66,11 @@ export class LessonViewComponent implements OnInit {
     let key = event.key;
 
     // FIXME: we need the focus to select text. Find a way to keep the selection without focus instead of graping it
-    textArea.focus();
+    if (this.lessonService.keepFocus) {
+      textArea.focus();
+    } else {
+      return true;
+    }
 
     // ignore windows \r ...
     if (key === '\r') {
@@ -121,7 +125,7 @@ export class LessonViewComponent implements OnInit {
     return this.lesson.charAt(cursorPos) === key;
   }
 
-  // we are strict about making errors -> generate new lesson and restart
+  // we are strict about making errors -> restart
   private resetAndDisplayError(textArea: HTMLTextAreaElement) {
     this.errorMessage = 'You missed a character, please start over!';
     this.lessonScore = this.lessonScore > 20 ? this.lessonScore - 20 : 0;
@@ -129,7 +133,6 @@ export class LessonViewComponent implements OnInit {
       this.scoreIncrement.emit(this.lessonScore);
       this.errorMessage += ` High score +${this.lessonScore} `;
     }
-    this.lesson = this.lessonService.make(this.lessonNumber);
     this.reset(textArea);
   }
 
@@ -149,6 +152,7 @@ export class LessonViewComponent implements OnInit {
 
   private updateLesson() {
     if (this.lessonNumber) {
+      this.reset(this.textarea.nativeElement);
       if (this.velthuis) {
         this.lesson = this.velthuisService.substitute(this.lessonService.make(this.lessonNumber));
       } else {
