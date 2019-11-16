@@ -8,9 +8,6 @@ import {Error} from 'tslint/lib/error';
 })
 export class LessonService {
 
-  // TODO: remove  this dirty hack and handle the focus issue properly
-  keepFocus = true;
-
   // TODO: calc this value
   static readonly MAX_LESSON = 38;
 

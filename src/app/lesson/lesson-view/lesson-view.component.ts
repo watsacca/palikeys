@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {LessonService} from '../lesson.service';
 import {KeyboardLayoutType} from '../_models/keyboard.model';
 import {ActivatedRoute, Params, Router} from '@angular/router';
@@ -60,9 +60,6 @@ export class LessonViewComponent implements OnInit {
         if (this.layoutType && this.lessonNumber) {
           this.lesson = this.lessonService.make(this.lessonNumber, this.layoutType);
         }
-        if (this.textarea) {
-          this.textarea.nativeElement.focus();
-        }
       }
     );
     this.activatedRoute.url.subscribe(() => this.reset(this.textarea.nativeElement));
@@ -72,16 +69,13 @@ export class LessonViewComponent implements OnInit {
     return this.router.navigate(['lesson', this.layoutType, this.lessonNumber]);
   }
 
-  // The text area needs to keep the focus to make sure key events are send to it.
-  onTextAreaBlur(): void {
-    if (this.lessonService.keepFocus && this.textarea) {
-      this.textarea.nativeElement.focus();
-    }
-  }
-
+  @HostListener('window:keypress', ['$event'])
   onKey(event: { key: string }) {
     const textArea = this.textarea.nativeElement;
     let key = event.key;
+
+    // FIXME: we need the focus to select text. Find a way to keep the selection without focus instead of graping it
+    textArea.focus();
 
     // ignore windows \r ...
     if (key === '\r') {

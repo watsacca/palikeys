@@ -4,7 +4,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar, MatSnackBarRef} from '@angular/material/snack-bar';
 import {UserDialogComponent} from './user/user-dialog.component';
 import {UserService} from './user/user.service';
-import {LessonService} from './lesson/lesson.service';
 import {GdprSnackBarComponent} from './gdpr-snack-bar/gdpr-snack-bar.component';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -22,8 +21,7 @@ export class AppComponent implements OnInit {
               private router: Router,
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
-              private userService: UserService,
-              private lessonService: LessonService) {
+              private userService: UserService) {
     updates.available.subscribe(() => {
       this.updateAvailable = true;
     });
@@ -47,14 +45,12 @@ export class AppComponent implements OnInit {
   }
 
   openUserDialog() {
-    this.lessonService.keepFocus = false;
     const dialogRef = this.dialog.open(UserDialogComponent, {
       width: '250px',
       data: {username: this.userService.username}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.lessonService.keepFocus = true;
       if (result && typeof result === 'string' && this.userService.username !== result) {
         this.router.navigate([], {queryParams: {username: result}, queryParamsHandling: 'merge'});
       }
