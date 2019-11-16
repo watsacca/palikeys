@@ -18,8 +18,8 @@
     <mat-card-content>
       <textarea #textArea id="lessonTextArea"
                 title="Lesson"
-                rows="{{lessonNumber >= LONG_LESSON_NUMBER ? 27 : 10}}"
-                cols="{{lessonNumber >= LONG_LESSON_NUMBER ? 80 : 50}}"
+                rows="10"
+                cols="50"
                 readonly
                 style="resize: none; font-size: 1.5em; font-family: 'Courier New'">{{lesson}}</textarea>
     </mat-card-content>
@@ -35,15 +35,6 @@
           </button>
         </mat-grid-tile>
         <mat-grid-tile class="pk-text-center">
-          <label for="keyboardLayoutSelect" class="pk-padding-right-xs">
-            <mat-icon aria-label="Previous">keyboard</mat-icon>
-          </label>
-          <select id="keyboardLayoutSelect"
-                  [(ngModel)]="layoutType"
-                  (ngModelChange)="onKeyboardLayoutChange()"
-                  matTooltip="Change Keyboard Layout">
-            <option [value]="lo.value" *ngFor="let lo of layoutOptions">{{lo.name}}</option>
-          </select>
           <select id="keyboardLayoutMapping"
                   [(ngModel)]="keyboardMapping"
                   matTooltip="Select a Keyboard Mapping"

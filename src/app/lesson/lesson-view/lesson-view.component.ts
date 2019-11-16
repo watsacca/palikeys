@@ -1,7 +1,6 @@
 import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {LessonService} from '../lesson.service';
-import {KeyboardLayoutType} from '../_models/keyboard.model';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import {Score} from '../../score/_models/scroe.model';
 import {KeyboardMapping, KeyboardMappingService} from '../keyboard-mapping.service';
 
@@ -16,7 +15,6 @@ export class LessonViewComponent implements OnInit {
   @Output() scoreIncrement = new EventEmitter<number>();
 
   readonly MAX_LESSON = LessonService.MAX_LESSON;
-  readonly LONG_LESSON_NUMBER = LessonService.LONG_LESSON_NUMBER;
 
   lessonNumber = 1;
   lesson = '';
@@ -27,10 +25,6 @@ export class LessonViewComponent implements OnInit {
   finishedMessage = '';
   lessonScore = 0;
 
-  layoutType: KeyboardLayoutType = 'qwerty';
-  layoutOptions: { name: string, value: KeyboardLayoutType }[] =
-    [{name: 'QWERTY', value: 'qwerty'}, {name: 'QWPR', value: 'qwpr'}, {name: 'Pali Ṃeāt', value: 'paliMeat'}];
-
   keyboardMapping: KeyboardMapping | false = false;
   keyboardMappingOptions: { name: string, value: KeyboardMapping }[] =
     [{name: 'QWERTY -> Pali Ṃeāt', value: 'qwertyToPaliMeat'},
@@ -40,10 +34,9 @@ export class LessonViewComponent implements OnInit {
     ];
 
 
-  @ViewChild('textArea', { static: true }) private textarea: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('textArea', {static: true}) private textarea: ElementRef<HTMLTextAreaElement>;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private router: Router,
               private lessonService: LessonService,
               private keyboardMappingService: KeyboardMappingService) {
   }
@@ -56,17 +49,12 @@ export class LessonViewComponent implements OnInit {
         this.lessonScore = 0;
         this.cursorPos = 0;
         this.lessonNumber = parseInt(params['lessonNumber'], 10);
-        this.layoutType = params['layoutType'];
-        if (this.layoutType && this.lessonNumber) {
-          this.lesson = this.lessonService.make(this.lessonNumber, this.layoutType);
+        if (this.lessonNumber) {
+          this.lesson = this.lessonService.make(this.lessonNumber);
         }
       }
     );
     this.activatedRoute.url.subscribe(() => this.reset(this.textarea.nativeElement));
-  }
-
-  onKeyboardLayoutChange() {
-    return this.router.navigate(['lesson', this.layoutType, this.lessonNumber]);
   }
 
   @HostListener('window:keypress', ['$event'])
@@ -116,12 +104,13 @@ export class LessonViewComponent implements OnInit {
   }
 
   makeLessonLink(offset = 0) {
-    return `/lesson/${this.layoutType}/${this.lessonNumber + offset}`;
+    return `/lesson/${this.lessonNumber + offset}`;
   }
 
   // if the user does not press the space / return button, that's fine
   private matchesLessonWithSpace(key: string, cursorPos: number) {
-    return this.matchesLesson(' ', cursorPos) &&
+    return (this.matchesLesson(' ', cursorPos) ||
+      this.matchesLesson('\n', cursorPos)) &&
       this.matchesLesson(key, cursorPos + 1);
   }
 
@@ -138,7 +127,7 @@ export class LessonViewComponent implements OnInit {
       this.errorMessage += ` High score +${this.lessonScore} ` +
         `(${this.lessonService.calcWordsPerMinute(this.timeStampStart, this.lesson, this.cursorPos)} words/minute)`;
     }
-    this.lesson = this.lessonService.make(this.lessonNumber, this.layoutType);
+    this.lesson = this.lessonService.make(this.lessonNumber);
     this.reset(textArea);
   }
 
@@ -151,7 +140,7 @@ export class LessonViewComponent implements OnInit {
   private correctKey(textArea: HTMLTextAreaElement, key: string) {
     textArea.setSelectionRange(0, ++this.cursorPos);
     this.errorMessage = '';
-    if (key !== ' ') {
+    if (key !== ' ' && key !== '\n') {
       this.lessonScore++;
     }
   }

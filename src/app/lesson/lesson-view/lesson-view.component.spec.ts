@@ -20,7 +20,6 @@ describe('LessonViewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LessonViewComponent);
     component = fixture.componentInstance;
-    component.layoutType = 'qwerty';
     component.lessonNumber = 1;
     fixture.detectChanges();
   });

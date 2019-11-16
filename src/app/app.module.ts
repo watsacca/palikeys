@@ -27,7 +27,6 @@ import {ScoreListComponent} from './score/score-list/score-list.component';
 import {InfoComponent} from './info/info.component';
 import {UserDialogComponent} from './user/user-dialog.component';
 import {HelpComponent} from './help/help.component';
-import {LayoutPictureComponent} from './lesson/layout-picture/layout-picture.component';
 import {GdprSnackBarComponent} from './gdpr-snack-bar/gdpr-snack-bar.component';
 
 @NgModule({
@@ -39,7 +38,6 @@ import {GdprSnackBarComponent} from './gdpr-snack-bar/gdpr-snack-bar.component';
     InfoComponent,
     UserDialogComponent,
     HelpComponent,
-    LayoutPictureComponent,
     GdprSnackBarComponent
   ],
   imports: [

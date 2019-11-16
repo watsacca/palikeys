@@ -1,3 +1,4 @@
+// TODO: delete this file, since unused?
 export let paliLong: string[];
 export let englishLong: string[];
 
