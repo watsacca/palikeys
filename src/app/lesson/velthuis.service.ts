@@ -15,6 +15,7 @@ export class VelthuisService {
     '.ll': 'ḹ',
     '.m': 'ṃ',
     '.h': 'ḥ',
+    '.t': 'ṭ',
   };
 
   private readonly reverseMap = VelthuisService.flip(this.map);
