@@ -7,23 +7,8 @@ describe('LessonService', () => {
 
   beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be calc words per second', () => {
+  it('should make lesson 1', () => {
     const service: LessonService = TestBed.get(LessonService);
-    expect(service.calcWordsPerMinute(Date.now() - 1000 * 60, lesson, lesson.length)).toBe(100);
-  });
-
-  it('should be calc words per second - 2', () => {
-    const service: LessonService = TestBed.get(LessonService);
-    expect(service.calcWordsPerMinute(Date.now() - 10000 * 60, lesson, lesson.length)).toBe(10);
-  });
-
-  it('should be calc words per second for cursorPos 0', () => {
-    const service: LessonService = TestBed.get(LessonService);
-    expect(service.calcWordsPerMinute(Date.now() - 10000 * 60, lesson, 0)).toBe(0);
-  });
-
-  it('should be calc words per second for cursorPos 100', () => {
-    const service: LessonService = TestBed.get(LessonService);
-    expect(service.calcWordsPerMinute(Date.now() - 10000 * 60, lesson, 100)).toBe(2);
+    expect(service.make(1)).toBeDefined();
   });
 });

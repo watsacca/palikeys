@@ -19,7 +19,6 @@ export class LessonViewComponent implements OnInit {
   lessonNumber = 1;
   lesson = '';
   cursorPos = 0;
-  timeStampStart: number;
 
   errorMessage = '';
   finishedMessage = '';
@@ -87,14 +86,9 @@ export class LessonViewComponent implements OnInit {
       this.resetAndDisplayError(textArea);
     }
 
-    if (this.cursorPos === 1) {
-      this.timeStampStart = Date.now();
-    }
-
     if (!this.finishedMessage && this.cursorPos >= this.lesson.length) {
       this.lessonScore += 100 * this.lessonNumber;
-      this.finishedMessage = `Lesson completed! High score +${this.lessonScore} 🙌 ` +
-        `(${this.lessonService.calcWordsPerMinute(this.timeStampStart, this.lesson, this.cursorPos)} words/minute)`;
+      this.finishedMessage = `Lesson completed! High score +${this.lessonScore} 🙌 `;
       this.scoreIncrement.emit(this.lessonScore);
       this.lessonScore = 0;
     }
@@ -124,8 +118,7 @@ export class LessonViewComponent implements OnInit {
     this.lessonScore = this.lessonScore > 20 ? this.lessonScore - 20 : 0;
     if (this.lessonScore > 0) {
       this.scoreIncrement.emit(this.lessonScore);
-      this.errorMessage += ` High score +${this.lessonScore} ` +
-        `(${this.lessonService.calcWordsPerMinute(this.timeStampStart, this.lesson, this.cursorPos)} words/minute)`;
+      this.errorMessage += ` High score +${this.lessonScore} `;
     }
     this.lesson = this.lessonService.make(this.lessonNumber);
     this.reset(textArea);
