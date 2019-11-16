@@ -19,7 +19,7 @@
       <textarea #textArea id="lessonTextArea"
                 title="Lesson"
                 rows="10"
-                cols="50"
+                cols="70"
                 readonly
                 style="resize: none; font-size: 1.5em; font-family: 'Courier New'">{{lesson}}</textarea>
     </mat-card-content>
@@ -35,6 +35,10 @@
           </button>
         </mat-grid-tile>
         <mat-grid-tile class="pk-text-center">
+          <mat-checkbox class="example-margin"
+                        (change)="onVelthuisChanged()"
+                        [(ngModel)]="velthuis">Velthuis
+          </mat-checkbox>
           <select id="keyboardLayoutMapping"
                   [(ngModel)]="keyboardMapping"
                   matTooltip="Select a Keyboard Mapping"

@@ -1,8 +1,9 @@
 import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {LessonService} from '../lesson.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Score} from '../../score/_models/scroe.model';
 import {KeyboardMapping, KeyboardMappingService} from '../keyboard-mapping.service';
+import {VelthuisService} from '../velthuis.service';
 
 @Component({
   selector: 'app-lesson-view',
@@ -24,6 +25,8 @@ export class LessonViewComponent implements OnInit {
   finishedMessage = '';
   lessonScore = 0;
 
+  velthuis = false;
+
   keyboardMapping: KeyboardMapping | false = false;
   keyboardMappingOptions: { name: string, value: KeyboardMapping }[] =
     [{name: 'QWERTY -> Pali Ṃeāt', value: 'qwertyToPaliMeat'},
@@ -36,7 +39,9 @@ export class LessonViewComponent implements OnInit {
   @ViewChild('textArea', {static: true}) private textarea: ElementRef<HTMLTextAreaElement>;
 
   constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
               private lessonService: LessonService,
+              private velthuisService: VelthuisService,
               private keyboardMappingService: KeyboardMappingService) {
   }
 
@@ -48,9 +53,8 @@ export class LessonViewComponent implements OnInit {
         this.lessonScore = 0;
         this.cursorPos = 0;
         this.lessonNumber = parseInt(params['lessonNumber'], 10);
-        if (this.lessonNumber) {
-          this.lesson = this.lessonService.make(this.lessonNumber);
-        }
+        this.velthuis = this.activatedRoute.snapshot.queryParams['velthuis'] === 'true';
+        this.updateLesson();
       }
     );
     this.activatedRoute.url.subscribe(() => this.reset(this.textarea.nativeElement));
@@ -97,6 +101,11 @@ export class LessonViewComponent implements OnInit {
     return false;
   }
 
+  onVelthuisChanged() {
+    this.updateLesson();
+    return this.router.navigate(['lesson', this.lessonNumber], {queryParams: {velthuis: this.velthuis}, queryParamsHandling: 'merge'});
+  }
+
   makeLessonLink(offset = 0) {
     return `/lesson/${this.lessonNumber + offset}`;
   }
@@ -135,6 +144,16 @@ export class LessonViewComponent implements OnInit {
     this.errorMessage = '';
     if (key !== ' ' && key !== '\n') {
       this.lessonScore++;
+    }
+  }
+
+  private updateLesson() {
+    if (this.lessonNumber) {
+      if (this.velthuis) {
+        this.lesson = this.velthuisService.substitute(this.lessonService.make(this.lessonNumber));
+      } else {
+        this.lesson = this.lessonService.make(this.lessonNumber);
+      }
     }
   }
 

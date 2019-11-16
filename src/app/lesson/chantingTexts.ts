@@ -49,4 +49,4 @@ morningChant.push('Yo imaṃ lokaṃ sadevakaṃ samārakaṃ sabrahmakaṃ\n' +
   'brahma-cariyaṃ pakāsesi\n' +
   'Tam-ahaṃ bhagavantaṃ abhipūjayāmi tam-ahaṃ bhagavantaṃ sirasā namāmi\n');
 
-chantingTexts = [...morningChant, ...eveningChant];
+chantingTexts = [...morningChant /*, ...eveningChant */];

@@ -28,6 +28,7 @@ import {InfoComponent} from './info/info.component';
 import {UserDialogComponent} from './user/user-dialog.component';
 import {HelpComponent} from './help/help.component';
 import {GdprSnackBarComponent} from './gdpr-snack-bar/gdpr-snack-bar.component';
+import {MatCheckboxModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {GdprSnackBarComponent} from './gdpr-snack-bar/gdpr-snack-bar.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
     MatButtonModule,
     MatTooltipModule,
     MatSnackBarModule
