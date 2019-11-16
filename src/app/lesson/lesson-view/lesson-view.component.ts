@@ -65,6 +65,7 @@ export class LessonViewComponent implements OnInit {
         }
       }
     );
+    this.activatedRoute.url.subscribe(() => this.reset(this.textarea.nativeElement));
   }
 
   onKeyboardLayoutChange() {
@@ -144,6 +145,10 @@ export class LessonViewComponent implements OnInit {
         `(${this.lessonService.calcWordsPerMinute(this.timeStampStart, this.lesson, this.cursorPos)} words/minute)`;
     }
     this.lesson = this.lessonService.make(this.lessonNumber, this.layoutType);
+    this.reset(textArea);
+  }
+
+  private reset(textArea: HTMLTextAreaElement) {
     textArea.setSelectionRange(0, 0);
     this.cursorPos = 0;
     this.lessonScore = 0;
