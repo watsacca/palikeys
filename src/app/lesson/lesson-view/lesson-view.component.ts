@@ -119,6 +119,7 @@ export class LessonViewComponent implements OnInit {
     return (this.matchesLesson(' ', cursorPos) ||
       this.matchesLesson('\n', cursorPos) ||
       this.matchesLesson('’', cursorPos) ||
+      this.matchesLesson('/', cursorPos) ||
       this.matchesLesson('-', cursorPos)) &&
       this.matchesLesson(key, cursorPos + 1);
   }
