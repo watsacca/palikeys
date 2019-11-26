@@ -147,4 +147,104 @@ morningChant.push('Cira-parinibbutampi taṃ bhagavantaṃ saraṇaṃ gatā\n' 
   'Sā sā no paṭipatti\n' +
   'Imassa kevalassa dukkha-kkhandhassa antakiriyāya saṃvattatu\n');
 
-chantingTexts = [...morningChant /*, ...eveningChant */];
+const closingHomage = 'Arahaṃ sammāsambuddho bhagavā\n' +
+  'Buddhaṃ bhagavantaṃ abhivādemi\n' +
+  'Svākkhāto bhagavatā dhammo\n' +
+  'Dhammaṃ namassāmi\n' +
+  'Supaṭipanno bhagavato sāvakasaṅgho\n' +
+  'Saṅghaṃ namāmi\n';
+
+eveningChant.push('Handa mayaṃ buddhānussatinayaṃ karomase\n' +
+  'Taṃ kho pana bhagavantaṃ evaṃ kalyāṇo kittisaddo abbhuggato\n' +
+  'Itipi so bhagavā arahaṃ sammāsambuddho\n' +
+  'Vijjācaraṇa-sampanno sugato lokavidū\n' +
+  'Anuttaro purisadamma-sārathi satthā deva-manussānaṃ buddho bhagavā’ti\n');
+
+eveningChant.push('Buddh’vārahanta-varatādiguṇābhiyutto\n' +
+  'Suddhābhiñāṇa-karuṇāhi samāgatatto\n' +
+  'Bodhesi yo sujanataṃ kamalaṃ va sūro\n' +
+  'Vandām’ahaṃ tam-araṇaṃ sirasā jinendaṃ\n' +
+  'Buddho yo sabba-pāṇīnaṃ saraṇaṃ khemam-uttamaṃ\n');
+
+eveningChant.push('Paṭhamānussatiṭṭhānaṃ vandāmi taṃ siren’ahaṃ\n' +
+  'Buddhassāh’asmi dāso/dāsī va buddho me sāmi-kissaro\n' +
+  'Buddho dukkhassa ghātā ca vidhātā ca hitassa me\n' +
+  'Buddhass’āhaṃ niyyādemi sarīrañ-jīvitañ-cidaṃ\n' +
+  'Vandanto’haṃ/Vandantī’haṃ carissāmi buddhass’eva subodhitaṃ\n');
+
+eveningChant.push('Natthi me saraṇaṃ aññaṃ buddho me saraṇaṃ varaṃ\n' +
+  'Etena sacca-vajjena vaḍḍheyyaṃ satthu-sāsane\n' +
+  'Buddhaṃ me vandamānena/vandamānāya\n' +
+  'yaṃ puññaṃ pasutaṃ idha\n' +
+  'Sabbepi antarāyā me māhesuṃ tassa tejasā\n');
+
+eveningChant.push('Kāyena vācāya va cetasā vā\n' +
+  'Buddhe kukammaṃ pakataṃ mayā yaṃ\n' +
+  'Buddho paṭiggaṇhātu accayantaṃ\n' +
+  'Kālantare saṃvarituṃ va buddhe');
+
+eveningChant.push('Handa mayaṃ dhammānussatinayaṃ karomase\n' +
+  'Svākkhāto bhagavatā dhammo\n' +
+  'Sandiṭṭhiko akāliko ehipassiko\n' +
+  'Opanayiko paccattaṃ veditabbo viññūhī’ti');
+
+eveningChant.push('Handa mayaṃ dhammābhigītiṃ karomase\n' +
+  'Svākkhātat’ādiguṇa-yoga-vasena seyyo\n' +
+  'Yo magga-pāka-pariyatti-vimokkha-bhedo\n' +
+  'Dhammo kuloka-patanā tada-dhāri-dhārī\n' +
+  'Vandām’ahaṃ tama-haraṃ vara-dhammam-etaṃ\n');
+
+eveningChant.push('Dhammo yo sabba-pāṇīnaṃ saraṇaṃ khemam-uttamaṃ\n' +
+  'Dutiyānussatiṭṭhānaṃ vandāmi taṃ siren’ahaṃ\n' +
+  'Dhammassāh’asmi dāso/dāsī va dhammo me sāmi-kissaro\n' +
+  'Dhammo dukkhassa ghātā ca vidhātā ca hitassa me\n' +
+  'Dhammass’āhaṃ niyyādemi sarīrañ-jīvitañ-cidaṃ\n');
+
+eveningChant.push('Vandantohaṃ/Vandantīhaṃ carissāmi dhammass’eva sudhammataṃ\n' +
+  'Natthi me saraṇaṃ aññaṃ dhammo me saraṇaṃ varaṃ\n' +
+  'Etena sacca-vajjena vaḍḍheyyaṃ satthu-sāsane\n' +
+  'Dhammaṃ me vandamānena/vandamānāya\n' +
+  'yaṃ puññaṃ pasutaṃ idha\n');
+
+eveningChant.push('Sabbepi antarāyā me māhesuṃ tassa tejasā\n' +
+  'Kāyena vācāya va cetasā vā\n' +
+  'Dhamme kukammaṃ pakataṃ mayā yaṃ\n' +
+  'Dhammo paṭiggaṇhātu accayantaṃ\n' +
+  'Kālantare saṃvarituṃ va dhamme');
+
+eveningChant.push('Handa mayaṃ saṅghānussatinayaṃ karomase\n' +
+  'Supaṭipanno bhagavato sāvakasaṅgho\n' +
+  'Ujupaṭipanno bhagavato sāvakasaṅgho\n' +
+  'Ñāyapaṭipanno bhagavato sāvakasaṅgho\n' +
+  'Sāmīcipaṭipanno bhagavato sāvakasaṅgho\n');
+
+eveningChant.push('Yadidaṃ cattāri purisayugāni aṭṭha purisapuggalā\n' +
+  'Esa bhagavato sāvakasaṅgho\n' +
+  'Āhuneyyo pāhuneyyo dakkhiṇeyyo añjali-karaṇīyo\n' +
+  'Anuttaraṃ puññakkhettaṃ lokassā’ti\n');
+
+eveningChant.push('Handa mayaṃ saṅghābhigītiṃ karomase\n' +
+  'Saddhammajo supaṭipatti-guṇādiyutto\n' +
+  'Yo’ṭṭhabbidho ariyapuggala-saṅgha-seṭṭho\n' +
+  'Sīlādidhamma-pavarāsaya-kāya-citto\n' +
+  'Vandām’ahaṃ tam-ariyāna-gaṇaṃ susuddhaṃ\n');
+
+eveningChant.push('Saṅgho yo sabba-pāṇīnaṃ saraṇaṃ khemam-uttamaṃ\n' +
+  'Tatiyānussatiṭṭhānaṃ vandāmi taṃ siren’ahaṃ' +
+  'Saṅghass’āhasmi dāso/dāsī va saṅgho me sāmi-kissaro\n' +
+  'Saṅgho dukkhassa ghātā ca vidhātā ca hitassa me\n' +
+  'Saṅghass’āhaṃ niyyādemi sarīrañ-jīvitañ-cidaṃ\n' +
+  'Vandanto’haṃ/Vandantī’haṃ carissāmi saṅghassopaṭipannataṃ\n');
+
+eveningChant.push('Natthi me saraṇaṃ aññaṃ saṅgho me saraṇaṃ varaṃ\n' +
+  'Etena sacca-vajjena vaḍḍheyyaṃ satthu-sāsane\n' +
+  'Saṅghaṃ me vandamānena/vandamānāya\n' +
+  'yaṃ puññaṃ pasutaṃ idha\n');
+
+eveningChant.push('Sabbepi antarāyā me māhesuṃ tassa tejasā\n' +
+  'Kāyena vācāya va cetasā vā\n' +
+  'Saṅghe kukammaṃ pakataṃ mayā yaṃ\n' +
+  'Saṅgho paṭiggaṇhātu accayantaṃ\n' +
+  'Kālantare saṃvarituṃ va saṅghe');
+
+chantingTexts = [...morningChant, closingHomage, ...eveningChant, ];
