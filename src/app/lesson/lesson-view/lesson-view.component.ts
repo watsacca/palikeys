@@ -85,7 +85,7 @@ export class LessonViewComponent implements OnInit {
 
     if (this.finishedMessage) {
       // TODO: do something here to communicate that the lesson is finished (shake animation for the textArea?)
-    } else if (this.matchesLessonWithSpace(key, this.cursorPos)) {
+    } else if (this.matchesLessonWithSpecialKey(key, this.cursorPos)) {
       this.cursorPos++;
       this.correctKey(textArea, key);
     } else if (this.matchesLesson(key, this.cursorPos)) {
@@ -114,10 +114,12 @@ export class LessonViewComponent implements OnInit {
     return `/lesson/${this.lessonNumber + offset}`;
   }
 
-  // if the user does not press the space / return button, that's fine
-  private matchesLessonWithSpace(key: string, cursorPos: number) {
+  // the user does not need to type the space, return or '-' button
+  private matchesLessonWithSpecialKey(key: string, cursorPos: number) {
     return (this.matchesLesson(' ', cursorPos) ||
-      this.matchesLesson('\n', cursorPos)) &&
+      this.matchesLesson('\n', cursorPos) ||
+      this.matchesLesson('’', cursorPos) ||
+      this.matchesLesson('-', cursorPos)) &&
       this.matchesLesson(key, cursorPos + 1);
   }
 
