@@ -115,20 +115,6 @@ export class LessonViewComponent implements OnInit {
     return this.state === State.SHOW_SCORE;
   }
 
-  // the user does not need to type the space, return or '-' button
-  private matchesLessonWithSpecialKey(key: string, cursorPos: number) {
-    return (this.matchesLesson(' ', cursorPos) ||
-      this.matchesLesson('\n', cursorPos) ||
-      this.matchesLesson('’', cursorPos) ||
-      this.matchesLesson('/', cursorPos) ||
-      this.matchesLesson('-', cursorPos)) &&
-      this.matchesLesson(key, cursorPos + 1);
-  }
-
-  private matchesLesson(key: string, cursorPos: number) {
-    return this.lessonTyped.charAt(cursorPos) === key;
-  }
-
   private reset() {
     this.lessonTyped = '';
     this.lessonScore = 0;
