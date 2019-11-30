@@ -3,6 +3,7 @@ import {LessonService} from '../lesson.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Score} from '../../score/_models/scroe.model';
 import {VelthuisService} from '../velthuis.service';
+import {DiffResults} from 'ngx-text-diff/lib/ngx-text-diff.model';
 
 enum State {
   SHOW_LESSON,
@@ -59,17 +60,7 @@ export class LessonViewComponent implements OnInit {
 
   onDoneClicked() {
     this.lessonTyped = this.lessonTyped.replace('\r', '');
-
-    // if (this.keyboardMapping && (this.keyboardMapping as any) !== 'false') {
-    //   key = this.keyboardMappingService.translate(key, this.keyboardMapping);
-    // }
-
-    this.lessonScore += 100 * this.lessonNumber;
-    this.finishedMessage = `Lesson completed! High score +${this.lessonScore} 🙌 `;
-    this.scoreIncrement.emit(this.lessonScore);
-    this.lessonScore = 0;
     this.state = State.SHOW_SCORE;
-
   }
 
   onRestartClicked() {
@@ -87,8 +78,21 @@ export class LessonViewComponent implements OnInit {
     return '';
   }
 
-  makeLessonScore() {
-    return 'TODO';
+  onScoreDiff(diff: DiffResults) {
+    this.lessonScore += (this.makeLessonText().split('\n').length - diff.diffsCount) * 100;
+    if (diff.diffsCount === 0) {
+      this.finishedMessage = `Lesson completed with no errors! High score +${this.lessonScore} 🙌 `;
+      this.scoreIncrement.emit(this.lessonScore);
+    } else if (diff.diffsCount === 1) {
+      this.finishedMessage = `Lesson completed with errors in only one line. You are getting there! High score +${this.lessonScore} 🙌`;
+      this.scoreIncrement.emit(this.lessonScore);
+    } else if (this.lessonScore > 0) {
+      this.errorMessage = `Lesson completed with errors in ${diff.diffsCount} lines. Please try again. High score +${this.lessonScore} 🙌`;
+      this.scoreIncrement.emit(this.lessonScore);
+    } else {
+      this.errorMessage = 'Too many errors! Please try again.';
+    }
+    this.lessonScore = 0;
   }
 
   onVelthuisChanged() {

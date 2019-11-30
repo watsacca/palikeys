@@ -21,7 +21,13 @@
                 cols="70"
                 [(ngModel)]="lessonTyped"
                 style="resize: none; font-size: 1.5em; font-family: 'Courier New',monospace"></textarea>
-      <div *ngIf="isShowScore()" class="text-div">{{makeLessonScore()}}</div>
+      <td-ngx-text-diff *ngIf="isShowScore()"
+                        [left]="lessonTyped"
+                        [right]="makeLessonText()"
+                        [showToolbar]="false"
+                        (compareResults)="onScoreDiff($event)"
+                        style="text-align: left;">
+      </td-ngx-text-diff>
     </mat-card-content>
     <mat-card-footer>
       <mat-grid-list cols="4" rowHeight="40px" class="pk-padding-bottom-s">

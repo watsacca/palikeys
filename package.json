@@ -32,7 +32,9 @@
     "@angular/pwa": "^0.803.18",
     "@angular/router": "~8.2.13",
     "@angular/service-worker": "~8.2.13",
+    "@types/diff-match-patch": "^1.0.32",
     "core-js": "^3.4.0",
+    "ngx-text-diff": "^0.5.4",
     "rxjs": "~6.5.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.10.2"

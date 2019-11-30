@@ -29,6 +29,7 @@ import {UserDialogComponent} from './user/user-dialog.component';
 import {HelpComponent} from './help/help.component';
 import {GdprSnackBarComponent} from './gdpr-snack-bar/gdpr-snack-bar.component';
 import {MatCheckboxModule} from '@angular/material';
+import { NgxTextDiffModule } from 'ngx-text-diff';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import {MatCheckboxModule} from '@angular/material';
     MatCheckboxModule,
     MatButtonModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxTextDiffModule,
   ],
   entryComponents: [
     UserDialogComponent,
