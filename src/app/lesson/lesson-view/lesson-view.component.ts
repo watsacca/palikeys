@@ -47,11 +47,9 @@ export class LessonViewComponent implements OnInit {
         this.lessonNumber = parseInt(params['lessonNumber'], 10);
         this.velthuis = this.activatedRoute.snapshot.queryParams['velthuis'] === 'true';
         this.reset();
-        this.textarea.nativeElement.focus();
       }
     );
     this.activatedRoute.url.subscribe(() => this.reset());
-    this.textarea.nativeElement.focus();
   }
 
   onStartClicked() {
