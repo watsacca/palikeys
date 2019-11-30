@@ -5,3 +5,13 @@ mat-icon {
 textarea::selection {
   background: lightgreen;
 }
+
+.text-div {
+  border: 1px solid gray;
+  white-space: pre;
+  font-size: 1.5em;
+  font-family: 'Courier New', monospace;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}

@@ -8,23 +8,23 @@
           <mat-icon>bar_chart</mat-icon>High Score: {{score.score}}
         </span>
       </div>
-      <div style="color: green;" *ngIf="finishedMessage">
-        {{finishedMessage}}
-        <a routerLink="{{makeLessonLink(0)}}" queryParamsHandling="preserve">Restart</a>&nbsp;
-        <a *ngIf="lessonNumber < MAX_LESSON" routerLink="{{makeLessonLink(1)}}" queryParamsHandling="preserve">Next</a>
-      </div>
+      <div style="color: green;" *ngIf="finishedMessage">{{finishedMessage}}</div>
       <div style="color: red;" *ngIf="errorMessage">{{errorMessage}}</div>
     </mat-card-title>
     <mat-card-content>
-      <textarea #textArea id="lessonTextArea"
+      <div *ngIf="isShowLesson()" class="text-div">{{makeLessonText()}}</div>
+      <textarea *ngIf="isTyping()"
+                #textArea
+                id="lessonTextArea"
                 title="Lesson"
                 rows="10"
                 cols="70"
-                readonly
-                style="resize: none; font-size: 1.5em; font-family: 'Courier New'">{{lesson}}</textarea>
+                [(ngModel)]="lessonTyped"
+                style="resize: none; font-size: 1.5em; font-family: 'Courier New',monospace"></textarea>
+      <div *ngIf="isShowScore()" class="text-div">{{makeLessonScore()}}</div>
     </mat-card-content>
     <mat-card-footer>
-      <mat-grid-list cols="3" rowHeight="40px" class="pk-padding-bottom-s">
+      <mat-grid-list cols="4" rowHeight="40px" class="pk-padding-bottom-s">
         <mat-grid-tile style="text-align: left">
           <button mat-icon-button
                   mat-stroked-button
@@ -35,18 +35,30 @@
           </button>
         </mat-grid-tile>
         <mat-grid-tile class="pk-text-center">
+          <button mat-raised-button
+                  color="primary"
+                  *ngIf="isShowLesson()"
+                  (click)="onStartClicked()">
+            Start!
+          </button>
+          <button mat-raised-button
+                  color="primary"
+                  *ngIf="isTyping()"
+                  (click)="onDoneClicked()">
+            Done!
+          </button>
+          <button mat-raised-button
+                  color="primary"
+                  *ngIf="isShowScore()"
+                  (click)="onRestartClicked()">
+            Restart!
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile class="pk-text-center">
           <mat-checkbox class="example-margin"
                         (change)="onVelthuisChanged()"
                         [(ngModel)]="velthuis">Velthuis
           </mat-checkbox>
-          <select id="keyboardLayoutMapping"
-                  [(ngModel)]="keyboardMapping"
-                  matTooltip="Select a Keyboard Mapping"
-                  title="Keyboard Layout Mapping"
-                  class="pk-margin-left">
-            <option [value]="false">No Mapping</option>
-            <option [value]="lm.value" *ngFor="let lm of keyboardMappingOptions">{{lm.name}}</option>
-          </select>
         </mat-grid-tile>
         <mat-grid-tile style="text-align: right">
           <button mat-icon-button
