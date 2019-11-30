@@ -13,13 +13,13 @@
     </mat-card-title>
     <mat-card-content>
       <div *ngIf="isShowLesson()" class="text-div">{{makeLessonText()}}</div>
-      <textarea *ngIf="isTyping()"
-                #textArea
+      <textarea #textArea
                 id="lessonTextArea"
                 title="Lesson"
                 rows="10"
                 cols="70"
                 [(ngModel)]="lessonTyped"
+                [ngClass]="{hide: !isTyping()}"
                 style="resize: none; font-size: 1.5em; font-family: 'Courier New',monospace"></textarea>
       <td-ngx-text-diff *ngIf="isShowScore()"
                         [left]="lessonTyped"

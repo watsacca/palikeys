@@ -6,6 +6,10 @@ textarea::selection {
   background: lightgreen;
 }
 
+.hide {
+  display: none;
+}
+
 .text-div {
   border: 1px solid gray;
   white-space: pre;

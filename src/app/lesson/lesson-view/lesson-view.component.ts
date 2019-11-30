@@ -56,6 +56,8 @@ export class LessonViewComponent implements OnInit {
   onStartClicked() {
     this.state = State.TYPING;
     this.focus();
+    // FIXME: need to wait for text area to be visble to focus it...
+    setTimeout(() => this.focus(), 100);
   }
 
   onDoneClicked() {
