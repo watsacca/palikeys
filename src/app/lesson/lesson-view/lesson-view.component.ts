@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {LessonService} from '../lesson.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Score} from '../../score/_models/scroe.model';
@@ -68,6 +68,22 @@ export class LessonViewComponent implements OnInit {
   onRestartClicked() {
     this.reset();
   }
+
+  // enter key -> start lesson
+  @HostListener('window:keypress', ['$event'])
+  onEnterKeyPress($event: any) {
+    if ($event.key !== 'enter' && $event.key === '\n') {
+      return false;
+    } else if (this.isShowLesson()) {
+      this.onStartClicked();
+      return false;
+    } else if (this.isShowScore()) {
+      this.onRestartClicked();
+      return false;
+    }
+    return true;
+  }
+
 
   makeLessonText() {
     if (this.lessonNumber) {
