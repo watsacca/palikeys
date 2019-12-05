@@ -8,11 +8,11 @@ export const asubaChant: string[] = [];
 // from https://cdn.amaravati.org/wp content/uploads/2014/09/30/Chanting Book Vol 1 Web.pdf
 const dedicationOfOfferings: string[] = [];
 
-dedicationOfOfferings[0] = 'Yo so bhagavā arahaṃ sammāsambuddho\n'
-  + 'Svākkhāto yena bhagavatā dhammo\n'
-  + 'Supaṭipanno yassa bhagavato sāvakasaṅgho\n'
-  + 'Tam mayaṃ bhagavantaṃ sadhammaṃ sasaṅghaṃ\n'
-  + 'Imehi sakkārehi yathārahaṃ āropitehi abhipūjayāma';
+dedicationOfOfferings[0] = 'yo so bhagavā arahaṃ sammāsambuddho\n'
++ 'svākkhāto yena bhagavatā dhammo\n'
++ 'supaṭipanno yassa bhagavato sāvakasaṅgho\n'
++ 'tam mayaṃ bhagavantaṃ sadhammaṃ sasaṅghaṃ\n'
++ 'imehi sakkārehi yathārahaṃ āropitehi abhipūjayāma';
 
 dedicationOfOfferings[1] = 'sādhu no bhante bhagavā sucira parinibbutopi\n'
   + 'pacchimā janatānukampa mānasā\n'
