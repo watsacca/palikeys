@@ -101,7 +101,7 @@ export class LessonViewComponent implements OnInit {
     if (diff.diffsCount === 0) {
       this.finishedMessage = `Lesson completed with no errors! High score +${this.lessonScore} 🙌 `;
       this.scoreIncrement.emit(this.lessonScore);
-    } else if (diff.diffsCount === 1) {
+    } else if (diff.diffsCount === 1 && this.lessonScore > 0) {
       this.finishedMessage = `Lesson completed with errors in only one line. You are getting there! High score +${this.lessonScore} 🙌`;
       this.scoreIncrement.emit(this.lessonScore);
     } else if (this.lessonScore > 0) {
