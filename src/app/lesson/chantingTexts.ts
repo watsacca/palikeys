@@ -1,4 +1,5 @@
 export let chantingTexts: string[];
+export const closingHomage: string[] = [];
 export let morningChant: string[];
 export let eveningChant: string[];
 export const eightPreceptsChant: string[] = [];
@@ -31,15 +32,32 @@ preliminaryHomage.push('namo tassa bhagavato arahato sammāsambuddhassa\n' +
   'namo tassa bhagavato arahato sammāsambuddhassa\n' +
   'namo tassa bhagavato arahato sammāsambuddhassa');
 
-morningChant = [...dedicationOfOfferings, ...preliminaryHomage];
+const dedi3: string [] = [];
+const dedi5: string [] = [];
+
+for (let i = 0; i < dedicationOfOfferings.length; i++) {
+  if (i % 3 === 0) {
+    dedi3.push(dedicationOfOfferings[i]);
+  } else {
+    dedi3[dedi3.length - 1] += '\n' + dedicationOfOfferings[i];
+  }
+}
+
+for (let i = 0; i < dedicationOfOfferings.length; i++) {
+  if (i % 5 === 0) {
+    dedi5.push(dedicationOfOfferings[i]);
+  } else {
+    dedi5[dedi5.length - 1] += '\n' + dedicationOfOfferings[i];
+  }
+}
+
+morningChant = [...dedicationOfOfferings, ...dedi3, ...dedi5, ...preliminaryHomage];
 eveningChant = [...dedicationOfOfferings, ...preliminaryHomage];
 
 morningChant.push('handa mayaṃ buddhābhitthutiṃ karomase');
 morningChant.push('yo so tathāgato arahaṃ sammāsambuddho');
 morningChant.push('vijjācaraṇa sampanno');
-morningChant.push('sugato');
-morningChant.push('lokavidū');
-morningChant.push('anuttaro purisadamma sārathi');
+morningChant.push('sugato lokavidū anuttaro purisadamma sārathi');
 morningChant.push('satthā deva manussānaṃ');
 morningChant.push('buddho bhagavā');
 
@@ -52,10 +70,7 @@ morningChant.push('tam ahaṃ bhagavantaṃ abhipūjayāmi tam ahaṃ bhagavanta
 
 morningChant.push('handa mayaṃ dhammābhitthutiṃ karomase');
 morningChant.push('yo so svākkhāto bhagavatā dhammo');
-morningChant.push('sandiṭṭhiko');
-morningChant.push('akāliko');
-morningChant.push('ehipassiko');
-morningChant.push('opanayiko');
+morningChant.push('sandiṭṭhiko akāliko ehipassiko opanayiko');
 morningChant.push('paccattaṃ veditabbo viññūhi');
 morningChant.push('tam ahaṃ dhammaṃ abhipūjayāmi tam ahaṃ dhammaṃ sirasā namāmi');
 
@@ -67,9 +82,7 @@ morningChant.push('sāmīcipaṭipanno bhagavato sāvakasaṅgho');
 
 morningChant.push('yadidaṃ cattāri purisayugāni aṭṭha purisapuggalā');
 morningChant.push('esa bhagavato sāvakasaṅgho');
-morningChant.push('āhuneyyo');
-morningChant.push('pāhuneyyo');
-morningChant.push('dakkhiṇeyyo');
+morningChant.push('āhuneyyo pāhuneyyo dakkhiṇeyyo');
 morningChant.push('añjali karaṇīyo');
 morningChant.push('anuttaraṃ puññakkhettaṃ lokassa');
 morningChant.push('tam ahaṃ saṅghaṃ abhipūjayāmi tam ahaṃ saṅghaṃ sirasā namāmi');
@@ -148,7 +161,6 @@ morningChant.push('tassa bhagavato sāsanaṃ yathā sati yathā balaṃ manasik
 morningChant.push('sā sā no paṭipatti');
 morningChant.push('imassa kevalassa dukkha kkhandhassa antakiriyāya saṃvattatu');
 
-const closingHomage: string[] = [];
 closingHomage.push('arahaṃ sammāsambuddho bhagavā');
 closingHomage.push('buddhaṃ bhagavantaṃ abhivādemi');
 closingHomage.push('svākkhāto bhagavatā dhammo');
